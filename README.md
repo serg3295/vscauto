@@ -20,6 +20,16 @@ Create folders
 
 ```
 .output -- empty
-.vscode --files from this repository
+.vscode -- files from this repository
 your files in workspace
 ```
+
+# Settings
+
+File **ftp.txt**  - device IP address, credential information for FTP server
+
+File **http.txt** - device IP address
+
+File **auto.ps1** - $lfs_size, $lfs_base, $lfs_mapped
+
+*$lfs_base* and *$lfs_mapped* uses only for an LFS absolute image (luac.cross with -a \<baseAddr\> option.)
