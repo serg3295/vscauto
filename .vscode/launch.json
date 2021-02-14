@@ -1,0 +1,45 @@
+{
+    // Используйте IntelliSense, чтобы узнать о возможных атрибутах.
+    // Наведите указатель мыши, чтобы просмотреть описания существующих атрибутов.
+    // Для получения дополнительной информации посетите: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+		{
+            "name": "Debug Lua",
+            "type": "lua",
+            "request": "launch",
+            "stopOnEntry": true,
+            "program": "${file}",
+            "cwd": "${workspaceFolder}",
+            "path": [
+                "${workspaceFolder}/?.lua",
+            ],
+            "cpath": "${workspaceFolder}/?.dll",
+            "arg": [],
+            "consoleCoding": "utf8",
+            "console": "internalConsole",
+            "internalConsoleOptions": "openOnSessionStart"
+        },
+        {
+            "name": "Debug Lua with input",
+            "type": "lua",
+            "request": "launch",
+            "stopOnEntry": true,
+            "program": "${file}",
+            "cwd": "${workspaceFolder}",
+            "path": [
+                "${workspaceFolder}/?.lua",
+            ],
+            "cpath": "${workspaceFolder}/?.dll",
+            "arg": [],
+            "consoleCoding": "utf8",
+            "console": "integratedTerminal",
+            "outputCapture": [
+                "io.write"
+            ],
+            "presentation": {
+                "focus": true
+            }
+        }
+    ]
+}
