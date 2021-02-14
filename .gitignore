@@ -1,0 +1,4 @@
+/.output/*
+/init/
+/*.lua
+!ftpserver.lua

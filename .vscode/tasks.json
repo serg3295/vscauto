@@ -1,0 +1,250 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Cross compiler",
+      "type": "shell",
+      "command": "luac.cross.exe -o ./.output/${fileBasenameNoExtension}.lc  -l ${fileDirname}/${fileBasename}  > ./.output/${fileBasenameNoExtension}.log",
+      "presentation": {
+          "reveal": "silent",
+          "showReuseMessage": false,
+          "clear": true
+      },
+      "group": {
+          "kind": "test",
+          "isDefault": true
+      }
+    },
+    {
+      "label": "LuaSrcDiet",
+      "type": "shell",
+      "command": "luaSrcDiet ${fileDirname}/${fileBasename} -o ./.output/${fileBasenameNoExtension}.lua",
+      "presentation": {
+          "reveal": "silent",
+          "showReuseMessage": false,
+          "clear": true
+      },
+      "group": {
+          "kind": "test",
+          "isDefault": true
+      }
+    },
+    {
+      "label": "luacheck",
+      "type": "shell",
+      "command": "c:/lua/luacheck.exe ${fileDirname}/${fileBasename} > ./.output/${fileBasenameNoExtension}.log",
+      "problemMatcher": [],
+      "presentation": {
+          "focus": true,
+          "clear": true
+      }
+  },
+    {
+      "label": "COM: ESP File system Info ",
+      "type": "shell",
+      "command": "nodemcu-tool fsinfo ${input:PORT}",
+      "group": {
+          "kind": "test",
+          "isDefault": true
+      },
+      "presentation": {
+          "focus": true,
+          "clear": true
+      }
+    },
+    {
+      "label": "COM: upload file",
+      "type": "shell",
+      "command": "nodemcu-tool upload --minify ${input:PORT} ${relativeFile}",
+      "group": {
+          "kind": "test",
+          "isDefault": true
+      },
+      "presentation": {
+          "focus": true,
+          "clear": true
+        }
+    },
+    {
+      "label": "COM: run file",
+      "type": "shell",
+      "command": "nodemcu-tool run ${input:PORT} ${fileBasename}",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "presentation": {
+        "focus": true
+      }
+    },
+    {
+      "label": "COM: run file in terminal",
+      "type": "shell",
+      "command": "nodemcu-tool terminal ${input:PORT} --run ${fileBasename}",
+      "problemMatcher": [],
+      "presentation": {
+          "focus": true,
+          "clear": true
+      }
+    },
+    {
+      "label": "COM: reset ESP",
+      "type": "shell",
+      "command": "nodemcu-tool reset --softreset  ${input:PORT}",
+      "problemMatcher": [],
+      "presentation": {
+          "reveal": "silent",
+          "showReuseMessage": false
+      }
+    },
+    {
+      "label": "COM: terminal ESP",
+      "type": "shell",
+      "command": "nodemcu-tool terminal ${input:PORT}",
+      "problemMatcher": [],
+      "presentation": {
+          "focus": true,
+          "clear": true
+      }
+    },
+    {
+      "label": "COM: LFS build, upload & flashreload",
+      "type": "shell",
+      "command": "Set-ExecutionPolicy RemoteSigned -Scope Process ;./.vscode/auto.ps1 2 ${input:PORT} ./.output/lfs.img ${fileDirname}/*.lua ./.output/LFS_image-float.log",
+      "problemMatcher": [],
+      "presentation": {
+        "focus": true,
+        "clear": true
+      }
+    },
+    {
+      "label": "COM: absolute. LFS Build & upload",
+      "type": "shell",
+      "command": "Set-ExecutionPolicy RemoteSigned -Scope Process ;./.vscode/auto.ps1 5 ${input:PORT} ./.output/lfs.img ${fileDirname}/*.lua ./.output/LFS_image-float.log",
+      "problemMatcher": [],
+      "presentation": {
+        "focus": true,
+        "clear": true
+      }
+    },
+    {
+      "label": "COM: file compile, upload, run",
+      "type": "shell",
+      "command": "Set-ExecutionPolicy RemoteSigned -Scope Process ; ./.vscode/auto.ps1 4 ${input:PORT} ./.output/${fileBasenameNoExtension}.lc  ${fileDirname}/${fileBasename} ./.output/${fileBasenameNoExtension}.log ${fileBasenameNoExtension}.lc",
+      "problemMatcher": [],
+      "presentation": {
+        "focus": true,
+        "clear": true
+      }
+    },
+    {
+      "label": "COM: file compile, upload, run in terminal",
+      "type": "shell",
+      "command": "Set-ExecutionPolicy RemoteSigned -Scope Process ; ./.vscode/auto.ps1 3 ${input:PORT} ./.output/${fileBasenameNoExtension}.lc  ${fileDirname}/${fileBasename} ./.output/${fileBasenameNoExtension}.log ${fileBasenameNoExtension}.lc",
+      "problemMatcher": [],
+      "presentation": {
+        "focus": true,
+        "clear": true
+      }
+    },
+    {
+      "label": "HTTP: upload file",
+      "type": "shell",
+      "command": "curl.exe -F name=filename.lua -F myfile=@${relativeFile} --config ./.vscode/http.txt",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "presentation": {
+        "focus": true,
+        "clear": true
+      }
+    },
+    {
+      "label": "HTTP: run file",
+      "type": "shell",
+      "command": "curl.exe --get -d command=runfile -d filename=${fileBasename} --config ./.vscode/http.txt",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "silent",
+        "showReuseMessage": false,
+        "clear": true
+      }
+    },
+    {
+      "label": "HTTP: reset ESP",
+      "type": "shell",
+      "command": "curl.exe --get --data-ascii command=restart --config ./.vscode/http.txt",
+      "problemMatcher": [],
+      "presentation": {
+          "reveal": "silent",
+          "showReuseMessage": false
+      }
+    },
+    {
+      "label": "FTP: upload file",
+      "type": "shell",
+      "command": "curl.exe -T ${relativeFile} --config ./.vscode/ftp.txt --ftp-pasv --disable-epsv --progress-bar",
+      "problemMatcher": [],
+      "presentation": {
+        "focus": true,
+        "clear": true
+      }
+    },
+    {
+      "label": "FTP: run file",
+      "type": "shell",
+      "command": "curl.exe --config ./.vscode/ftp.txt --ftp-pasv --disable-epsv  --list-only -Q 'RUN ${fileBasename}'",
+      "problemMatcher": [],
+      "presentation": {
+        "focus": true,
+        "clear": true
+      }
+    },
+    {
+      "label": "FTP: reset ESP",
+      "type": "shell",
+      "command": "curl.exe --config ./.vscode/ftp.txt --ftp-pasv --disable-epsv -l --silent -Q 'RST'",
+      "problemMatcher": [],
+      "presentation": {
+        "focus": true,
+        "clear": true
+      }
+    },
+    {
+      "label": "FTP: build LFS & upload",
+      "type": "shell",
+      "command": "Set-ExecutionPolicy RemoteSigned -Scope Process ;./.vscode/auto.ps1 1 ./.output/lfs.img ./.vscode/ftp.txt ${fileDirname}/*.lua ./.output/LFS_image-float.log",
+      "problemMatcher": [],
+      "presentation": {
+        "focus": true,
+        "clear": true
+      }
+    },
+    {
+      "label": "FTP: LuaSrcDiet & upload file",
+      "type": "shell",
+      "command": "Set-ExecutionPolicy RemoteSigned -Scope Process ;./.vscode/auto.ps1 6 ${fileDirname}/${fileBasename} ./.output/${fileBasenameNoExtension}.lua ./.vscode/ftp.txt ./.output/${fileBasenameNoExtension}.log",
+      "problemMatcher": [],
+      "presentation": {
+        "focus": true,
+        "clear": true
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "PORT",
+      "type": "pickString",
+      "description": "choose COM port",
+      "options": [
+        "--port=COM4",
+        "--port=COM3"
+      ],
+      "default": "--port=COM3"
+    }
+  ]
+}
