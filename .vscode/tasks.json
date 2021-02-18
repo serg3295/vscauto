@@ -53,7 +53,7 @@
       }
     },
     {
-      "label": "COM: upload file",
+      "label": "COM: upload active file",
       "type": "shell",
       "command": "nodemcu-tool upload --minify ${input:PORT} ${relativeFile}",
       "group": {
@@ -66,7 +66,7 @@
         }
     },
     {
-      "label": "COM: run file",
+      "label": "COM: run active file",
       "type": "shell",
       "command": "nodemcu-tool run ${input:PORT} ${fileBasename}",
       "group": {
@@ -78,7 +78,7 @@
       }
     },
     {
-      "label": "COM: run file in terminal",
+      "label": "COM: run active file in terminal",
       "type": "shell",
       "command": "nodemcu-tool terminal ${input:PORT} --run ${fileBasename}",
       "problemMatcher": [],
@@ -128,7 +128,7 @@
       }
     },
     {
-      "label": "COM: file compile, upload, run",
+      "label": "COM: active file - compile->upload->run",
       "type": "shell",
       "command": "Set-ExecutionPolicy RemoteSigned -Scope Process ; ./.vscode/auto.ps1 4 ${input:PORT} ./.output/${fileBasenameNoExtension}.lc  ${fileDirname}/${fileBasename} ./.output/${fileBasenameNoExtension}.log ${fileBasenameNoExtension}.lc",
       "problemMatcher": [],
@@ -138,7 +138,7 @@
       }
     },
     {
-      "label": "COM: file compile, upload, run in terminal",
+      "label": "COM: active file - compile->upload->run in terminal",
       "type": "shell",
       "command": "Set-ExecutionPolicy RemoteSigned -Scope Process ; ./.vscode/auto.ps1 3 ${input:PORT} ./.output/${fileBasenameNoExtension}.lc  ${fileDirname}/${fileBasename} ./.output/${fileBasenameNoExtension}.log ${fileBasenameNoExtension}.lc",
       "problemMatcher": [],
@@ -148,7 +148,7 @@
       }
     },
     {
-      "label": "HTTP: upload file",
+      "label": "HTTP: upload active file",
       "type": "shell",
       "command": "curl.exe -F name=filename.lua -F myfile=@${relativeFile} --config ./.vscode/http.txt",
       "group": {
@@ -161,7 +161,7 @@
       }
     },
     {
-      "label": "HTTP: run file",
+      "label": "HTTP: run active file",
       "type": "shell",
       "command": "curl.exe --get -d command=runfile -d filename=${fileBasename} --config ./.vscode/http.txt",
       "group": {
@@ -185,7 +185,7 @@
       }
     },
     {
-      "label": "FTP: upload file",
+      "label": "FTP: upload active file",
       "type": "shell",
       "command": "curl.exe -T ${relativeFile} --config ./.vscode/ftp.txt --ftp-pasv --disable-epsv --progress-bar",
       "problemMatcher": [],
@@ -195,7 +195,7 @@
       }
     },
     {
-      "label": "FTP: run file",
+      "label": "FTP: run active file",
       "type": "shell",
       "command": "curl.exe --config ./.vscode/ftp.txt --ftp-pasv --disable-epsv  --list-only -Q 'RUN ${fileBasename}'",
       "problemMatcher": [],
@@ -225,7 +225,7 @@
       }
     },
     {
-      "label": "FTP: LuaSrcDiet & upload file",
+      "label": "FTP: LuaSrcDiet & upload active file",
       "type": "shell",
       "command": "Set-ExecutionPolicy RemoteSigned -Scope Process ;./.vscode/auto.ps1 6 ${fileDirname}/${fileBasename} ./.output/${fileBasenameNoExtension}.lua ./.vscode/ftp.txt ./.output/${fileBasenameNoExtension}.log",
       "problemMatcher": [],
