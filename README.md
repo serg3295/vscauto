@@ -24,6 +24,8 @@ Create folders
 your files in workspace
 ```
 
+In order to execute the "COM: LFS build, upload & flashreload" command, you need to write the file lfsreload.lua to spiffs.
+
 # Settings
 
 File **ftp.txt**  - device IP address, credential information for FTP server

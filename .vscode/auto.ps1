@@ -15,13 +15,12 @@ switch ($args[0]) {
             curl.exe --config $args[2] --ftp-pasv --disable-epsv -Q "LFS"  --list-only
         }
         else {
-            Write-Warning("Compilation error")
+            Write-Warning("Compile error")
         }
         break
     }
 #--- command - COM: LFS build, upload & flashreload ---
     2 {
-        $var =  "node.LFS.reload('lfs.img')"
         $fpath = $args[2]
         $isFile = Test-Path $fpath
         if($isfile) {
@@ -31,10 +30,10 @@ switch ($args[0]) {
         $isFile = Test-Path $fpath
         if($isfile) {
             nodemcu-tool upload  $args[1] $args[2]
-            $var | nodemcu-tool terminal $args[1]
+            nodemcu-tool $args[1] terminal --run "lfsreload.lua"
         }
         else {
-            Write-Warning("Compilation error")
+            Write-Warning("Compile error")
         }
        break
     }
@@ -52,7 +51,7 @@ switch ($args[0]) {
             nodemcu-tool terminal --run $args[5] $args[1]
         }
         else {
-            Write-Warning("Compilation error")
+            Write-Warning("Compile error")
         }
         break
     }
@@ -70,7 +69,7 @@ switch ($args[0]) {
         nodemcu-tool run $args[1] $args[5]
         }
         else {
-            Write-Warning("Compilation error")
+            Write-Warning("Compile error")
         }
         break
     }
@@ -90,11 +89,11 @@ switch ($args[0]) {
             esptool.py $args[1] write_flash $lfs_base $fpath
         }
         else {
-            Write-Warning("Compilation error")
+            Write-Warning("Compile error")
         }
         break
     }
-#--- command - FTP: LuaSrcDiet & upload ---
+#--- command - FTP: LuaSrcDiet & upload active file ---
     6 {
         $fpath = $args[2]
         $isFile = Test-Path $fpath
