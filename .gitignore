@@ -1,4 +1,5 @@
-/.output/*
+/.output/
 /init/
 /*.lua
 !ftpserver.lua
+!lfsreload.lua

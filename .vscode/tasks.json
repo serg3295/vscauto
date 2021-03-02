@@ -32,13 +32,23 @@
     {
       "label": "luacheck",
       "type": "shell",
-      "command": "c:/lua/luacheck.exe ${fileDirname}/${fileBasename} > ./.output/${fileBasenameNoExtension}.log",
+      "command": "luacheck.exe ${fileDirname}/${fileBasename} > ./.output/${fileBasenameNoExtension}.log",
       "problemMatcher": [],
       "presentation": {
           "focus": true,
           "clear": true
       }
-  },
+    },
+    {
+      "label": "luaDoc",
+      "type": "shell",
+      "command": "luadoc_start.bat ${fileBasename} -d ./.output",
+      "problemMatcher": [],
+      "presentation": {
+          "focus": true,
+          "clear": true
+      }
+    },
     {
       "label": "COM: ESP File system Info ",
       "type": "shell",
