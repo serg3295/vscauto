@@ -4,7 +4,7 @@
     {
       "label": "Cross compiler",
       "type": "shell",
-      "command": "luac.cross.exe -o ./.output/${fileBasenameNoExtension}.lc  -l ${fileDirname}/${fileBasename}  > ./.output/${fileBasenameNoExtension}.log",
+      "command": "Set-ExecutionPolicy RemoteSigned -Scope Process ;./.vscode/auto.ps1 7 ./.output/${fileBasenameNoExtension}.lc ${fileDirname}/${fileBasename} ./.output/${fileBasenameNoExtension}.log",
       "presentation": {
           "reveal": "silent",
           "showReuseMessage": false,
