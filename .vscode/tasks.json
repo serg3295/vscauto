@@ -18,7 +18,7 @@
     {
       "label": "LuaSrcDiet",
       "type": "shell",
-      "command": "luaSrcDiet ${fileDirname}/${fileBasename} -o ./.output/${fileBasenameNoExtension}.lua",
+      "command": "luaSrcDiet ${file} -o ./.output/${fileBasenameNoExtension}.lua",
       "presentation": {
           "reveal": "silent",
           "showReuseMessage": false,
@@ -32,7 +32,7 @@
     {
       "label": "luacheck",
       "type": "shell",
-      "command": "luacheck.exe ${fileDirname}/${fileBasename} > ./.output/${fileBasenameNoExtension}.log",
+     "command": "luacheck.exe ${file} > ./.output/${fileBasenameNoExtension}.log",
       "problemMatcher": [],
       "presentation": {
           "focus": true,
