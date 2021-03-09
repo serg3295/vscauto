@@ -12,7 +12,7 @@
     "Lua.runtime.version": "Lua 5.1",
     "editor.detectIndentation": false,
     "editor.tabSize": 2,
-    "Lua.workspace.library": {
-      "c:\\Users\\Serg\\Documents\\Lua\\nodeMCU\\nodeMCU-emmy\\esp8266\\": true
-    }
+    "Lua.workspace.library": [
+      "c:\\Users\\Serg\\Documents\\Lua\\nodeMCU\\nodeMCU-emmy\\esp8266\\"
+    ]
 }
