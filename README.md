@@ -4,6 +4,8 @@ Visual Studio Code scripts and commands for compile, upload and run Lua files on
 
 Works on Windows only.
 
+<img src = "https://github.com/serg3295/vscauto/blob/main/images/vscauto2.gif">
+
 # Install
 
 install **[nodemcu-tool](https://github.com/AndiDittrich/NodeMCU-Tool)**
