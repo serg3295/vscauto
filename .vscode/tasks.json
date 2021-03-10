@@ -121,6 +121,10 @@
       "label": "COM: LFS build, upload & flashreload",
       "type": "shell",
       "command": "Set-ExecutionPolicy RemoteSigned -Scope Process ;./.vscode/auto.ps1 2 ${input:PORT} ./.output/lfs.img ${fileDirname}/*.lua ./.output/LFS_image-float.log",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
       "problemMatcher": [],
       "presentation": {
         "focus": true,
@@ -228,6 +232,10 @@
       "label": "FTP: build LFS & upload",
       "type": "shell",
       "command": "Set-ExecutionPolicy RemoteSigned -Scope Process ;./.vscode/auto.ps1 1 ./.output/lfs.img ./.vscode/ftp.txt ${fileDirname}/*.lua ./.output/LFS_image-float.log",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
       "problemMatcher": [],
       "presentation": {
         "focus": true,
