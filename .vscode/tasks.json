@@ -32,7 +32,7 @@
     {
       "label": "luacheck",
       "type": "shell",
-     "command": "luacheck.exe ${file} > ./.output/${fileBasenameNoExtension}.log",
+     "command": "luacheck ${file} > ./.output/${fileBasenameNoExtension}.log",
       "problemMatcher": [],
       "presentation": {
           "focus": true,
@@ -40,9 +40,9 @@
       }
     },
     {
-      "label": "luaDoc",
+      "label": "lDoc",
       "type": "shell",
-      "command": "luadoc_start.bat ${fileBasename} -d ./.output",
+      "command": "ldoc ${fileBasename} --dir ./.output",
       "problemMatcher": [],
       "presentation": {
           "focus": true,
