@@ -17,7 +17,7 @@ if (-not $luaVer) {
   }
 }
 if (-not $luaVer) {
-  Write-Warning("The 'Lua.runtime.version' setting from 'Sumneko Lua language server' extension was not found! Set this value manually in this script.")
+  Write-Warning("The 'Lua.runtime.version' setting from 'sumneko Lua language server' extension was not found! Set this value manually in this script.")
   exit 1
 }
 
