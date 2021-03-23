@@ -10,7 +10,7 @@ Works on Windows only.
 
 install **[nodemcu-tool](https://github.com/AndiDittrich/NodeMCU-Tool)**
 
-install **[LuaSrcDiet](https://github.com/jirutka/luasrcdiet#using-luarocks)**
+install **[LuaSrcDiet](https://github.com/jirutka/luasrcdiet#using-luarocks)** (optional)
 
 Enable PowerShell scripts execution:
 
