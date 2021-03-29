@@ -1,6 +1,6 @@
 #
-# Leave Lua.version = $null for automatically getting value from
-# 'sumneko Lua Language server' settings. Set $luaVer to "5.1" or "5.3"
+# Keep the Lua.version = $null for automatically getting value from
+# 'sumneko Lua Language server' setting. Set $luaVer to "5.1" or "5.3"
 # if 'sumneko Lua Language server' VSCode extension is not installed.
 #
 $luaVer   = $null    # = "5.1" or = "5.3"
@@ -17,7 +17,7 @@ if (-not $luaVer) {
   }
 }
 if (-not $luaVer) {
-  Write-Warning("The 'Lua.runtime.version' setting from 'sumneko Lua language server' extension was not found! Set this value manually in this script.")
+  Write-Warning("The 'Lua.runtime.version' setting from 'sumneko Lua language server' extension was not found! Set Lua version manually in this script.")
   exit 1
 }
 
