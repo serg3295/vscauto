@@ -4,13 +4,15 @@ Visual Studio Code scripts and commands for compile, upload and run Lua files on
 
 Works on Windows only.
 
+<img src = "https://github.com/serg3295/vscauto/blob/main/images/vscauto1.gif">
+
 <img src = "https://github.com/serg3295/vscauto/blob/main/images/vscauto2.gif">
 
 # Install
 
-install **[nodemcu-tool](https://github.com/AndiDittrich/NodeMCU-Tool)**
+Install **[nodemcu-tool](https://github.com/AndiDittrich/NodeMCU-Tool)**
 
-install **[LuaSrcDiet](https://github.com/jirutka/luasrcdiet#using-luarocks)** (optional)
+Install **[LuaSrcDiet](https://github.com/jirutka/luasrcdiet#using-luarocks)** (optional)
 
 Enable PowerShell scripts execution:
 
