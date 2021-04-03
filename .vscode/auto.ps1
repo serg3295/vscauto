@@ -138,5 +138,18 @@ switch ($args[0]) {
     break
   }
 
+  #--- command - COM: upload active file ---
+  8 {
+    if ($luaVer -eq "5.3") {
+      Write-Warning("The file is being uploaded without the `--minify` option! See: (https://github.com/mathiasbynens/luamin/issues/76)")
+      nodemcu-tool upload $args[1] $args[2]
+    } elseif ($luaVer -eq "5.1") {
+      nodemcu-tool upload --minify $args[1] $args[2]
+    } else {
+      Write-Warning("Incorrect Lua version: $luaVer")
+      exit 1
+    }
+    break
+  }
 }
 exit

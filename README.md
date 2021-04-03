@@ -4,9 +4,9 @@ Visual Studio Code scripts and commands for compile, upload and run Lua files on
 
 Works on Windows only.
 
-<img src = "https://github.com/serg3295/vscauto/blob/main/images/vscauto1.gif">
+<img src = "./images/vscauto1.gif">
 
-<img src = "https://github.com/serg3295/vscauto/blob/main/images/vscauto2.gif">
+<img src = "./images/vscauto2.gif">
 
 # Install
 
