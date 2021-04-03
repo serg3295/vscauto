@@ -151,5 +151,21 @@ switch ($args[0]) {
     }
     break
   }
+
+#--- command - FTP: Luamin & upload active file ---
+9 {
+  $fpath = $args[2]
+  if (Test-Path $fpath) {
+    Remove-Item -Path $fpath
+  }
+  luamin -f $args[1] | Out-file $args[2]
+  if (Test-Path $fpath) {
+    curl.exe -T $fpath --config $args[3] --ftp-pasv --disable-epsv --progress-bar
+  } else {
+    Write-Warning("Luamin error")
+  }
+  break
+}
+
 }
 exit
