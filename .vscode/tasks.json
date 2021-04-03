@@ -251,6 +251,16 @@
         "focus": true,
         "clear": true
       }
+    },
+    {
+      "label": "FTP: Luamin & upload active file",
+      "type": "shell",
+      "command": "Set-ExecutionPolicy RemoteSigned -Scope Process ;./.vscode/auto.ps1 9 ${fileDirname}/${fileBasename} ./.output/${fileBasenameNoExtension}.lua ./.vscode/ftp.txt ./.output/${fileBasenameNoExtension}.log",
+      "problemMatcher": [],
+      "presentation": {
+        "focus": true,
+        "clear": true
+      }
     }
   ],
   "inputs": [
