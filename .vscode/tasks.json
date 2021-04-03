@@ -65,7 +65,7 @@
     {
       "label": "COM: upload active file",
       "type": "shell",
-      "command": "nodemcu-tool upload --minify ${input:PORT} ${relativeFile}",
+      "command": "Set-ExecutionPolicy RemoteSigned -Scope Process ;./.vscode/auto.ps1 8 ${input:PORT} ${relativeFile}",
       "group": {
           "kind": "test",
           "isDefault": true
