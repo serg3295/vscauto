@@ -7,9 +7,9 @@ $luaVer   = $null    # = "5.1" or = "5.3"
 $lfs_size = 0x040000
 $lfs_base = 0x084000
 
-$lfs_mapped = 0x40200000 + $lfs_base #an LFS region at ESP address 0x402'base'
+$lfs_mapped = 0x40200000 + $lfs_base #LFS region at ESP address 0x402'base'
 
-# Trying to get the 'Lua.runtime.version' value from an sumneko.Lua extension
+# Trying to get the 'Lua.runtime.version' value from sumneko.Lua extension
 if (-not $luaVer) {
   $fpath = ".\.vscode\settings.json"
   if (Test-Path $fpath) {
@@ -39,8 +39,8 @@ switch ($args[0]) {
     }
     & $luacCross -o $fpath -f -m $lfs_size -l $args[3] | Out-file $args[4]
     if (Test-Path $fpath) {
-      curl.exe -T $fpath --config $args[2] --ftp-pasv --disable-epsv --progress-bar  --list-only
-      curl.exe --config $args[2] --ftp-pasv --disable-epsv -Q "LFS"  --list-only
+      curl.exe -T $fpath --config $args[2] --ftp-pasv --disable-epsv --progress-bar --list-only
+      curl.exe --config $args[2] --ftp-pasv --disable-epsv -Q "LFS" --list-only
     } else {
       Write-Warning("Compile error")
     }
@@ -55,7 +55,7 @@ switch ($args[0]) {
     }
     & $luacCross -o $fpath -f -m $lfs_size -l $args[3] | Out-file $args[4]
     if (Test-Path $fpath) {
-      nodemcu-tool upload  $args[1] $fpath
+      nodemcu-tool upload $args[1] $fpath
       nodemcu-tool $args[1] terminal --run "lfsreload.lua"
     } else {
       Write-Warning("Compile error")
@@ -71,7 +71,7 @@ switch ($args[0]) {
     }
     & $luacCross -o $fpath -l $args[3] | Out-file $args[4]
     if (Test-Path $fpath) {
-      nodemcu-tool upload  $args[1] $fpath
+      nodemcu-tool upload $args[1] $fpath
       nodemcu-tool terminal --run $args[5] $args[1]
     } else {
       Write-Warning("Compile error")
@@ -87,7 +87,7 @@ switch ($args[0]) {
     }
     & $luacCross -o $fpath -l $args[3] | Out-file $args[4]
     if (Test-Path $fpath) {
-      nodemcu-tool upload  $args[1] $fpath
+      nodemcu-tool upload $args[1] $fpath
       nodemcu-tool run $args[1] $args[5]
     } else {
       Write-Warning("Compile error")

@@ -1,0 +1,277 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Cross compiler",
+      "type": "shell",
+      "command": "./.vscode/auto.sh 7 ./.output/${fileBasenameNoExtension}.lc ${fileDirname}/${fileBasename} ./.output/${fileBasenameNoExtension}.log",
+      "presentation": {
+          "reveal": "silent",
+          "showReuseMessage": false,
+          "clear": true
+      },
+      "group": {
+          "kind": "test",
+          "isDefault": true
+      }
+    },
+    {
+      "label": "LuaSrcDiet",
+      "type": "shell",
+      "command": "luasrcdiet ${file} -o ./.output/${fileBasenameNoExtension}.lua",
+      "presentation": {
+          "reveal": "silent",
+          "showReuseMessage": false,
+          "clear": true
+      },
+      "group": {
+          "kind": "test",
+          "isDefault": true
+      }
+    },
+    {
+      "label": "luacheck",
+      "type": "shell",
+     "command": "luacheck ${file} > ./.output/${fileBasenameNoExtension}.log",
+      "problemMatcher": [],
+      "presentation": {
+          "focus": true,
+          "clear": true
+      }
+    },
+    {
+      "label": "lDoc",
+      "type": "shell",
+      "command": "ldoc ${fileBasename} --dir ./.output",
+      "problemMatcher": [],
+      "presentation": {
+          "focus": true,
+          "clear": true
+      }
+    },
+    {
+      "label": "COM: ESP File system Info ",
+      "type": "shell",
+      "command": "nodemcu-tool fsinfo ${input:PORT}",
+      "group": {
+          "kind": "test",
+          "isDefault": true
+      },
+      "presentation": {
+          "focus": true,
+          "clear": true
+      }
+    },
+    {
+      "label": "COM: upload active file",
+      "type": "shell",
+      "command": "./.vscode/auto.sh 8 ${input:PORT} ${relativeFile}",
+      "group": {
+          "kind": "test",
+          "isDefault": true
+      },
+      "presentation": {
+          "focus": true,
+          "clear": true
+        }
+    },
+    {
+      "label": "COM: run active file",
+      "type": "shell",
+      "command": "nodemcu-tool run ${input:PORT} ${fileBasename}",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "presentation": {
+        "focus": true
+      }
+    },
+    {
+      "label": "COM: run active file in terminal",
+      "type": "shell",
+      "command": "nodemcu-tool terminal ${input:PORT} --run ${fileBasename}",
+      "problemMatcher": [],
+      "presentation": {
+          "focus": true,
+          "clear": true
+      }
+    },
+    {
+      "label": "COM: reset ESP",
+      "type": "shell",
+      "command": "nodemcu-tool reset --softreset ${input:PORT}",
+      "problemMatcher": [],
+      "presentation": {
+          "reveal": "silent",
+          "showReuseMessage": false
+      }
+    },
+    {
+      "label": "COM: terminal ESP",
+      "type": "shell",
+      "command": "nodemcu-tool terminal --port=/dev/ttyUSB0",
+      "problemMatcher": [],
+      "presentation": {
+          "focus": true,
+          "clear": true
+      }
+    },
+    {
+      "label": "COM: LFS build, upload & flashreload",
+      "type": "shell",
+      "command": "./.vscode/auto.sh 2 ${input:PORT} ./.output/lfs.img ${fileDirname} ./.output/lfs.log",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "focus": true,
+        "clear": true
+      }
+    },
+    {
+      "label": "COM: absolute. LFS Build & upload",
+      "type": "shell",
+      "command": "./.vscode/auto.sh 5 ${input:PORT} ./.output/lfs.img ${fileDirname} ./.output/LFSimage.log",
+      "problemMatcher": [],
+      "presentation": {
+        "focus": true,
+        "clear": true
+      }
+    },
+    {
+      "label": "COM: active file - compile->upload->run",
+      "type": "shell",
+      "command": "./.vscode/auto.sh 4 ${input:PORT} ./.output/${fileBasenameNoExtension}.lc ${fileDirname}/${fileBasename} ./.output/${fileBasenameNoExtension}.log ${fileBasenameNoExtension}.lc",
+      "problemMatcher": [],
+      "presentation": {
+        "focus": true,
+        "clear": true
+      }
+    },
+    {
+      "label": "COM: active file - compile->upload->run in terminal",
+      "type": "shell",
+      "command": "./.vscode/auto.sh 3 ${input:PORT} ./.output/${fileBasenameNoExtension}.lc ${fileDirname}/${fileBasename} ./.output/${fileBasenameNoExtension}.log ${fileBasenameNoExtension}.lc",
+      "problemMatcher": [],
+      "presentation": {
+        "focus": true,
+        "clear": true
+      }
+    },
+    {
+      "label": "HTTP: upload active file",
+      "type": "shell",
+      "command": "curl -F name=filename.lua -F myfile=@${relativeFile} --config ./.vscode/http.txt",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "presentation": {
+        "focus": true,
+        "clear": true
+      }
+    },
+    {
+      "label": "HTTP: run active file",
+      "type": "shell",
+      "command": "curl --get -d command=runfile -d filename=${fileBasename} --config ./.vscode/http.txt",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "silent",
+        "showReuseMessage": false,
+        "clear": true
+      }
+    },
+    {
+      "label": "HTTP: reset ESP",
+      "type": "shell",
+      "command": "curl --get --data-ascii command=restart --config ./.vscode/http.txt",
+      "problemMatcher": [],
+      "presentation": {
+          "reveal": "silent",
+          "showReuseMessage": false
+      }
+    },
+    {
+      "label": "FTP: upload active file",
+      "type": "shell",
+      "command": "curl -T ${relativeFile} --config ./.vscode/ftp.txt --ftp-pasv --disable-epsv --progress-bar",
+      "problemMatcher": [],
+      "presentation": {
+        "focus": true,
+        "clear": true
+      }
+    },
+    {
+      "label": "FTP: run active file",
+      "type": "shell",
+      "command": "curl --config ./.vscode/ftp.txt --ftp-pasv --disable-epsv --list-only -Q 'RUN ${fileBasename}'",
+      "problemMatcher": [],
+      "presentation": {
+        "focus": true,
+        "clear": true
+      }
+    },
+    {
+      "label": "FTP: reset ESP",
+      "type": "shell",
+      "command": "curl --config ./.vscode/ftp.txt --ftp-pasv --disable-epsv -l --silent -Q 'RST'",
+      "problemMatcher": [],
+      "presentation": {
+        "focus": true,
+        "clear": true
+      }
+    },
+    {
+      "label": "FTP: build LFS & upload",
+      "type": "shell",
+      "command": "./.vscode/auto.sh 1 ./.output/lfs.img ./.vscode/ftp.txt ${fileDirname} ./.output/lfs.log",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "focus": true,
+        "clear": true
+      }
+    },
+    {
+      "label": "FTP: LuaSrcDiet & upload active file",
+      "type": "shell",
+      "command": "./.vscode/auto.sh 6 ${fileDirname}/${fileBasename} ./.output/${fileBasenameNoExtension}.lua ./.vscode/ftp.txt ./.output/${fileBasenameNoExtension}.log",
+      "problemMatcher": [],
+      "presentation": {
+        "focus": true,
+        "clear": true
+      }
+    },
+    {
+      "label": "FTP: Luamin & upload active file",
+      "type": "shell",
+      "command": "./.vscode/auto.sh 9 ${fileDirname}/${fileBasename} ./.output/${fileBasenameNoExtension}.lua ./.vscode/ftp.txt",
+      "problemMatcher": [],
+      "presentation": {
+        "focus": true,
+        "clear": true
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "PORT",
+      "type": "pickString",
+      "description": "choose COM port",
+      "options": [
+        "--port=/dev/ttyUSB0"
+      ],
+      "default": "--port=/dev/ttyUSB0"
+    }
+  ]
+}

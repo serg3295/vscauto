@@ -1,0 +1,4 @@
+#ESP - IP address
+url = "ftp://192.168.11.103"
+#authentificate on ftp server  name:password
+user = test:12345
