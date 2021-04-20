@@ -100,7 +100,7 @@
     {
       "label": "COM: reset ESP",
       "type": "shell",
-      "command": "nodemcu-tool reset --softreset  ${input:PORT}",
+      "command": "nodemcu-tool reset --softreset ${input:PORT}",
       "problemMatcher": [],
       "presentation": {
           "reveal": "silent",
@@ -144,7 +144,7 @@
     {
       "label": "COM: active file - compile->upload->run",
       "type": "shell",
-      "command": "Set-ExecutionPolicy RemoteSigned -Scope Process ; ./.vscode/auto.ps1 4 ${input:PORT} ./.output/${fileBasenameNoExtension}.lc  ${fileDirname}/${fileBasename} ./.output/${fileBasenameNoExtension}.log ${fileBasenameNoExtension}.lc",
+      "command": "Set-ExecutionPolicy RemoteSigned -Scope Process ; ./.vscode/auto.ps1 4 ${input:PORT} ./.output/${fileBasenameNoExtension}.lc ${fileDirname}/${fileBasename} ./.output/${fileBasenameNoExtension}.log ${fileBasenameNoExtension}.lc",
       "problemMatcher": [],
       "presentation": {
         "focus": true,
@@ -154,7 +154,7 @@
     {
       "label": "COM: active file - compile->upload->run in terminal",
       "type": "shell",
-      "command": "Set-ExecutionPolicy RemoteSigned -Scope Process ; ./.vscode/auto.ps1 3 ${input:PORT} ./.output/${fileBasenameNoExtension}.lc  ${fileDirname}/${fileBasename} ./.output/${fileBasenameNoExtension}.log ${fileBasenameNoExtension}.lc",
+      "command": "Set-ExecutionPolicy RemoteSigned -Scope Process ; ./.vscode/auto.ps1 3 ${input:PORT} ./.output/${fileBasenameNoExtension}.lc ${fileDirname}/${fileBasename} ./.output/${fileBasenameNoExtension}.log ${fileBasenameNoExtension}.lc",
       "problemMatcher": [],
       "presentation": {
         "focus": true,
@@ -211,7 +211,7 @@
     {
       "label": "FTP: run active file",
       "type": "shell",
-      "command": "curl.exe --config ./.vscode/ftp.txt --ftp-pasv --disable-epsv  --list-only -Q 'RUN ${fileBasename}'",
+      "command": "curl.exe --config ./.vscode/ftp.txt --ftp-pasv --disable-epsv --list-only -Q 'RUN ${fileBasename}'",
       "problemMatcher": [],
       "presentation": {
         "focus": true,

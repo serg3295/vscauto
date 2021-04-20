@@ -1,0 +1,13 @@
+{
+    "Lua.diagnostics.globals": [
+      "_ENV",
+      "FAST_ftp",
+      "SPIFFS_ftp",
+      "fast",
+      "dataSrv"
+    ],
+    "Lua.diagnostics.disable": [
+        "lowercase-global"
+    ],
+    "Lua.runtime.version": "Lua 5.1"
+}
