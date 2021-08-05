@@ -129,7 +129,7 @@ case $1 in
 #--- command - COM: upload active file ---
   8)
     if [ $luaVer = "5.3" ]; then
-      echo "\033[33mThe file is being uploaded without the `--minify` option! See: (https://github.com/mathiasbynens/luamin/issues/76)\033[0m"
+      echo "\033[33mThe file is being uploaded without '--minify' option! See: (https://github.com/mathiasbynens/luamin/issues/76)\033[0m"
       nodemcu-tool upload $2 $3
     elif [ $luaVer = "5.1" ]; then
       nodemcu-tool upload --minify $2 $3

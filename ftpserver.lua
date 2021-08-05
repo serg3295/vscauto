@@ -1,15 +1,14 @@
 --[[SPLIT MODULE ftp]]
 
--- Origin implementation is by Terry Ellison
--- https://nodemcu.readthedocs.io/en/release/lua-modules/ftpserver/
+--[[ The original implementation is by Terry Ellison
+ https://nodemcu.readthedocs.io/en/release/lua-modules/ftpserver/
 
---[[ In this implementation was added non-standard FTP commands:
-   - RST -> node.restart()
-   - LFS -> node.LFS.reload("lfs.img")
-   - RUN -> run "file"
-]]
+ In this implementation non-standard FTP commands were added:
+      - RST -> node.restart()
+      - LFS -> node.LFS.reload("lfs.img")
+      - RUN -> run "file"
 
---[[ A simple ftp server
+  A simple ftp server
 
  This is my implementation of a FTP server using Github user Neronix's
  example as inspriration, but as a cleaner Lua implementation that is
