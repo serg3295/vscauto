@@ -129,8 +129,15 @@ case $1 in
 #--- command - COM: upload active file ---
   8)
     if [ $luaVer = "5.3" ]; then
-      echo "\033[33mThe file is being uploaded without '--minify' option! See: (https://github.com/mathiasbynens/luamin/issues/76)\033[0m"
-      nodemcu-tool upload $2 $3
+      echo "\033[33mMake sure that luamin from https://github.com/FATH-Mechatronics/luamin.git is installed! See: (https://github.com/mathiasbynens/luamin/issues/76)\033[0m"
+      fpath=$4
+      rmFile $fpath
+      luamin -f $3 > $4
+      if [ -f $fpath ]; then
+        nodemcu-tool upload $2 $4
+      else
+        echo "\033[31mLuamin error\033[0m"
+      fi
     elif [ $luaVer = "5.1" ]; then
       nodemcu-tool upload --minify $2 $3
     else
