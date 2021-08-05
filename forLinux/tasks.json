@@ -50,6 +50,16 @@
       }
     },
     {
+      "label": "lfs_file",
+      "type": "shell",
+      "command": "./forLinux make_resource ./* ",
+      "problemMatcher": [],
+      "presentation": {
+          "focus": true,
+          "clear": true
+      }
+    },
+    {
       "label": "COM: ESP File system Info ",
       "type": "shell",
       "command": "nodemcu-tool fsinfo ${input:PORT}",
