@@ -75,7 +75,7 @@
     {
       "label": "COM: upload active file",
       "type": "shell",
-      "command": "./.vscode/auto.sh 8 ${input:PORT} ${relativeFile}",
+      "command": "./.vscode/auto.sh 8 ${input:PORT} ${relativeFile} ./.output/${fileBasename}",
       "group": {
           "kind": "test",
           "isDefault": true

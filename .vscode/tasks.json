@@ -65,7 +65,7 @@
     {
       "label": "COM: upload active file",
       "type": "shell",
-      "command": "Set-ExecutionPolicy RemoteSigned -Scope Process ;./.vscode/auto.ps1 8 ${input:PORT} ${relativeFile}",
+      "command": "Set-ExecutionPolicy RemoteSigned -Scope Process ;./.vscode/auto.ps1 8 ${input:PORT} ${relativeFile} ./.output/${fileBasename}",
       "group": {
           "kind": "test",
           "isDefault": true

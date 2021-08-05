@@ -141,8 +141,17 @@ switch ($args[0]) {
   #--- command - COM: upload active file ---
   8 {
     if ($luaVer -eq "5.3") {
-      Write-Warning("The file is being uploaded without the `--minify` option! See: (https://github.com/mathiasbynens/luamin/issues/76)")
-      nodemcu-tool upload $args[1] $args[2]
+      Write-Warning("Make sure that luamin from https://github.com/FATH-Mechatronics/luamin.git is installed! See: (https://github.com/mathiasbynens/luamin/issues/76)")
+      $fpath = $args[3]
+      if (Test-Path $fpath) {
+        Remove-Item -Path $fpath
+      }
+      luamin -f $args[2] | Out-file $fpath
+      if (Test-Path $fpath) {
+        nodemcu-tool upload $args[1] $fpath
+      } else {
+        Write-Warning("Luamin error")
+      }
     } elseif ($luaVer -eq "5.1") {
       nodemcu-tool upload --minify $args[1] $args[2]
     } else {
@@ -158,7 +167,7 @@ switch ($args[0]) {
   if (Test-Path $fpath) {
     Remove-Item -Path $fpath
   }
-  luamin -f $args[1] | Out-file $args[2]
+  luamin -f $args[1] | Out-file $fpath
   if (Test-Path $fpath) {
     curl.exe -T $fpath --config $args[3] --ftp-pasv --disable-epsv --progress-bar
   } else {
