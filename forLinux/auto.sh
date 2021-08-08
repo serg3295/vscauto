@@ -158,6 +158,21 @@ case $1 in
     fi
   ;;
 
+#--- command - FTP: build LFS+resource & upload ---
+  10)
+    mkRes=$6"/.vscode/make_resource.lua resource/*"
+    $mkRes
+    fpath=$2
+    rmFile $fpath
+    $luacCross -o $fpath -f -m $lfs_size -l $4/*.lua > $5
+    if [ -f $fpath ]; then
+      curl -T $fpath --config $3 --ftp-pasv --disable-epsv --progress-bar --list-only
+      curl --config $3 --ftp-pasv --disable-epsv -Q "LFS" --list-only
+    else
+      echo "\033[31mCompile error\033[0m"
+    fi
+  ;;
+
   *)
     echo "\033[33mUnknown command\033[0m"
   ;;

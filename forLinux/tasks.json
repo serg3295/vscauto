@@ -52,7 +52,7 @@
     {
       "label": "lfs_file",
       "type": "shell",
-      "command": "./forLinux make_resource ./* ",
+      "command": "${workspaceFolder}/.vscode/make_resource.lua resource/* ",
       "problemMatcher": [],
       "presentation": {
           "focus": true,
@@ -242,6 +242,20 @@
       "label": "FTP: build LFS & upload",
       "type": "shell",
       "command": "./.vscode/auto.sh 1 ./.output/lfs.img ./.vscode/ftp.txt ${fileDirname} ./.output/lfs.log",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "focus": true,
+        "clear": true
+      }
+    },
+    {
+      "label": "FTP: build LFS+resourse & upload",
+      "type": "shell",
+      "command": "./.vscode/auto.sh 10 ./.output/lfs.img ./.vscode/ftp.txt ${fileDirname} ./.output/lfs.log ${workspaceFolder}",
       "group": {
         "kind": "build",
         "isDefault": true
